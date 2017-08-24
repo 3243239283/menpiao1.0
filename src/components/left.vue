@@ -26,7 +26,7 @@
 <script>
 export default {
   name: 'left',
-  data () {
+  data () { 
     return {
       current:1
     }
