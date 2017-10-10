@@ -12,8 +12,8 @@
       <div class="modular">
         <div class="modu" v-show="current==1">
           <ul>
-            <li><router-link to="./home"><li>首页</li></router-link></li>
-            <li><router-link to="./about"><li>关于我们</li></router-link></li>
+            <li><router-link to="./home">首页</router-link></li>
+            <li><router-link to="./about">关于我们</router-link></li>
           </ul>
         </div>
         <div class="modu" v-show="current==2">2</div>

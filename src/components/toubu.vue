@@ -15,9 +15,7 @@
   		<a href="javascript:">退出系统</a>
   	</div>
   	<div class="btnbox" style="width:calc(100% - 180px)">
-		<a href="javascript:">管理首页<span class="iconfont">&#xe622;</span></a>
-		<a class="current" href="javascript:">我的订单<span class="iconfont">&#xe622;</span></a>
-		<a href="javascript:">管理首页<span class="iconfont">&#xe622;</span></a>
+		<span v-for="(item,index) in pageArr"><router-link :to="item.src">{{ item.txt }}</router-link><i class="iconfont" @click.stop="close(index)">&#xe622;</i></span>
 	</div>
   </div>
 </template>
@@ -28,7 +26,12 @@ export default {
 	name: 'header',
 	data () {
 		return {
-	  		msg: 'header'
+	  		msg: 'header',
+	  		pageArr:[
+	  			{txt:'管理首页',src:'/'},
+	  			{txt:'关于我们',src:'/about'},
+	  			{txt:'首页',src:'/home'}
+	  		]
 		}
 	},
 	computed:{
@@ -40,9 +43,12 @@ export default {
         ...mapMutations([
 
         ]),
-        ...mapActions([
+        ...mapActions([ 
             
-        ])
+        ]),
+        close(index){
+
+        }
     }
 }
 </script>
@@ -155,7 +161,7 @@ export default {
 		top: 64px;
 		margin:0 0 0 180px;
 		background-color: #667393;
-    	a{
+    	span{
 	      	display: inline-block;
 	      	text-align: center;
 	      	min-width: 110px;
@@ -170,7 +176,7 @@ export default {
 	      	font-size: 12px;
 	      	position: relative;
 	      	padding: 0 10px 0 0;
-			span{
+			i{
 				position: absolute;
 				top:0;
 				right: 10px;
@@ -179,7 +185,7 @@ export default {
 				top: 15px;
 			}
     	}
-    	a.current{
+    	span.current{
       		background-color: #d8dce3;
       		color: #555;
     	}

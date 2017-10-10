@@ -1,7 +1,7 @@
 <template>
   <div class="about">
       <div class="tent">
-        <p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p><p>dfdfsdfd</p>
+        关于我们界面
       </div>
   </div>
 </template>

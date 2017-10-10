@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="contentbox" style="height: calc(100vh - 105px);">
       <div class="tent">
-        门票进存销
+        管理首页界面
       </div>
     </div>
   </div>
