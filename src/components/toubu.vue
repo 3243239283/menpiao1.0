@@ -1,10 +1,10 @@
 <template>
   <div class="header">
-  	<div class="logo">
-  		<h2><router-link to="./home">易途8管理</router-link></h2>
+  	<div class="logo" v-show="login.show">
+  		<h2><router-link to="./home">管理系统</router-link></h2>
   	</div>
   	<div class="hinge">
-  		<a class="hingebtn" href="javascript:"><i class="iconfont">&#xe61a;</i></a>
+  		<a class="hingebtn" @click='showleftFun()' href="javascript:"><i class="iconfont">&#xe61a;</i></a>
   	</div>
   	<div class="search">
   		<a class="adminbtn" href="javascript:">订单管理</a>
@@ -15,7 +15,7 @@
   		<a href="javascript:">退出系统</a>
   	</div>
   	<div class="btnbox" style="width:calc(100% - 180px)">
-		<span v-for="(item,index) in pageArr"><router-link :to="item.src">{{ item.txt }}</router-link><i class="iconfont" @click.stop="close(index)">&#xe622;</i></span>
+		<span v-for="(item,index) in pageArr"><router-link :to="item.src">{{ item.txt }}</router-link><i class="iconfont" @click.stop="close(index)" v-show="item.txt != '首页'">&#xe622;</i></span>
 	</div>
   </div>
 </template>
@@ -26,28 +26,39 @@ export default {
 	name: 'header',
 	data () {
 		return {
-	  		msg: 'header',
-	  		pageArr:[
-	  			{txt:'管理首页',src:'/'},
-	  			{txt:'关于我们',src:'/about'},
-	  			{txt:'首页',src:'/home'}
-	  		]
+	  		msg: 'header'
 		}
 	},
 	computed:{
 	    ...mapState([
-	    	'demo'
+	    	'login',
+	    	'pageArr'
 	    ])
 	},
     methods:{
         ...mapMutations([
-
+			'changeLogin',
+			'changePageArr'
         ]),
         ...mapActions([ 
             
         ]),
         close(index){
-
+			console.log('11');
+        },
+        showleftFun(){
+        	console.log(this.login.show);
+        	if(this.login.show==true){
+        		this.changeLogin({
+	                key:'show',
+	                val:false
+	            })
+        	}else{
+        		this.changeLogin({
+	                key:'show',
+	                val:true
+	            })
+        	}        	
         }
     }
 }
@@ -164,7 +175,7 @@ export default {
     	span{
 	      	display: inline-block;
 	      	text-align: center;
-	      	min-width: 110px;
+	      	min-width: 80px;
 	      	height: 38px;
 	      	line-height: 38px;
 	      	margin-top: 3px;
@@ -178,11 +189,10 @@ export default {
 	      	padding: 0 10px 0 0;
 			i{
 				position: absolute;
-				top:0;
-				right: 10px;
+				right: 5px;
 				font-size: 12px;
 				line-height: 10px;
-				top: 15px;
+				top: 14px;
 			}
     	}
     	span.current{

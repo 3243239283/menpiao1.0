@@ -25,5 +25,6 @@ export default {
 }
 .tent{
 	margin:0 15px;
+  height: 100%;
 }
 </style>

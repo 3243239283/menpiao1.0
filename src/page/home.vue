@@ -17,5 +17,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.home{
+	margin:0 15px;
+  	height: 100%;
+}
 </style>

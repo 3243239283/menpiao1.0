@@ -1,5 +1,5 @@
 <template>
-  <div class="left">
+  <div class="left" v-show="login.show">
     <div class="member">会员：18650197779</div>
     <div class="treeclass">
       <div class="tab">
@@ -12,8 +12,7 @@
       <div class="modular">
         <div class="modu" v-show="current==1">
           <ul>
-            <li><router-link to="./home">首页</router-link></li>
-            <li><router-link to="./about">关于我们</router-link></li>
+            <el-tree :data="treedata" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
           </ul>
         </div>
         <div class="modu" v-show="current==2">2</div>
@@ -24,16 +23,61 @@
 </template>
 
 <script>
+import {mapState,mapMutations,mapGetters,mapActions} from 'vuex'
 export default {
   name: 'left',
   data () { 
     return {
-      current:1
+      current:1,
+      treedata: [
+        {
+          label: '项目管理',
+          children: [
+            {label: '首页',path:'./home'},
+            {label: '关于我们',path:'./about'}
+          ]
+        },
+        {
+          label: '录单管理',
+          children: [
+            {label: '首页',path:'./home'},
+            {label: '关于我们',path:'./about'}
+          ]
+        }
+      ],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
     }
   },
-  methods: {
+  computed:{
+    ...mapState([
+      'login',
+      'pageArr'
+    ])
+  },
+  methods:{
+    ...mapMutations([
+      'changeLogin',
+      'changePageArr'
+    ]),
+    ...mapActions([ 
+        
+    ]),
+    close(index){
+      console.log('22')
+    },
     tabFun(type){
       this.current = type;
+    },
+    handleNodeClick(treedata) {
+      if(treedata.path != undefined){
+        //跳转到指定的二级菜单页
+        this.$router.push({
+          path:treedata.path
+        });
+      }
     }
   }
 }
